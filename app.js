@@ -1,5 +1,14 @@
 const textDisplay = document.getElementById('text')
-const phrases = ['Hello, my name is Ania.', 'I love to code.', 'I love to teach.']
+var phrases = [];
+document.getElementById('file').onchange = function(){
+    var file = this.files[0];
+    var reader = new FileReader();
+    reader.onload = function(progressEvent){
+        phrases = this.result.split(/\r\n|\n/);
+    };
+    reader.readAsText(file);
+  };
+//const phrases = ['Hello, my name is Ania.', 'I love to code.', 'I love to teach.']
 let i = 0
 let j = 0 
 let currentPhrase = []
